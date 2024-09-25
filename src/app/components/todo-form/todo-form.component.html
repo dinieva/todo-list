@@ -1,0 +1,34 @@
+<div class="component">
+    <h3>Создать задачу</h3>
+
+    <form [formGroup]="form" class="b-form" (ngSubmit)="submit()">
+        <tui-input formControlName="title">
+            Описание задачи
+            <input tuiTextfield type="text"/>
+        </tui-input>
+
+        <tui-select formControlName="completed">
+            Статус задачи
+            <input
+                placeholder="Выберите cтатус задачи"
+                tuiTextfield
+            />
+            <tui-data-list-wrapper
+                *tuiDataList
+                [items]="completedOptions"
+            />
+        </tui-select>
+
+        <button
+            appearance="secondary"
+            tuiButton
+            type="submit"
+            class="tui-space_right-3 tui-space_bottom-3"
+            [showLoader]="loading()"
+            [disabled] = "!form.valid"
+    >
+        Добавить
+    </button>
+        
+    </form>
+</div>
