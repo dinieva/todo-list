@@ -1,0 +1,16 @@
+<div class="component">
+    @if (todo$ | async; as todo) {
+        <ul class="container">
+            @for(singleTodo of todo; track $index) {
+                <tui-accordion-item>
+                    {{singleTodo.title}}
+                    <tui-chip [appearance]="singleTodo.completed ? 'success' : 'accent' ">{{singleTodo.completed ? 'Готово' : 'Не выполнено'}}</tui-chip>
+                    <ng-template tuiAccordionItemContent>
+                        <app-todo-form [isCreateForm]="false" [todo]="singleTodo"></app-todo-form>
+                    </ng-template>
+                </tui-accordion-item>
+            }
+        </ul>
+    }
+   
+</div>

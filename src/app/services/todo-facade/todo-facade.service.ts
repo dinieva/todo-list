@@ -15,4 +15,7 @@ export class TodoFacadeService {
   create(todo:NewTodo): Observable<Todo>{
     return this.apiService.create(todo)
   }
+  edit(todo: Todo): Observable<Todo>{
+    return this.apiService.edit(todo)
+  }
 }

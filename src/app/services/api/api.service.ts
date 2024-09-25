@@ -10,16 +10,16 @@ import {NewTodo} from 'src/app/models/new-todo.interface'
 export class ApiService {
   private readonly http = inject(HttpClient);
   private readonly url = 'https://jsonplaceholder.typicode.com/todos';
-  /* 
-  getData() {
-    return this.http.get(url);
-  }
-    */
+  
   get():Observable<Todo[]>{
     return this.http.get<Todo[]>(this.url) // операция получения данных
   }
 
   create(todo: NewTodo): Observable<Todo>{
     return this.http.post<Todo>(this.url, todo) // операция добавления данных
+  }
+
+  edit(todo: Todo): Observable<Todo>{
+    return this.http.put<Todo>(`${this.url}/${todo.id}`, todo)
   }
 }
